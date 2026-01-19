@@ -1,0 +1,39 @@
+{
+  "expo": {
+    "name": "RiseUp Collective",
+    "slug": "riseup-mobile",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/logo.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/logo_animated.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#FAF9F6"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.riseup.collective",
+      "icon": "./assets/logo.png"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/logo.png",
+        "backgroundColor": "#FAF9F6"
+      },
+      "package": "com.riseup.collective",
+      "icon": "./assets/logo.png"
+    },
+    "web": {
+      "favicon": "./assets/logo.png"
+    },
+    "plugins": [
+      "expo-router"
+    ],
+    "scheme": "riseup",
+    "sdkVersion": "54.0.0"
+  }
+}

@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Default theme colors (will be overridden by ThemeProvider) */
+  :root {
+    --color-background: #FAF9F6;
+    --color-surface: #FFFFFF;
+    --color-text-primary: #1C1C1C;
+    --color-text-secondary: #5F5F5F;
+    --color-text-tertiary: rgba(28, 28, 28, 0.5);
+    --color-border-light: rgba(28, 28, 28, 0.1);
+    --color-border-medium: rgba(28, 28, 28, 0.2);
+    --color-solidarity-red: #B11226;
+    --color-earth-green: #2F5D3A;
+    --color-sun-yellow: #E0B400;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-text-primary);
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  /* Style datetime input calendar icon for dark mode */
+  input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+    filter: invert(0.5);
+    cursor: pointer;
+  }
+
+  /* Dark mode - make calendar icon lighter */
+  [data-theme="dark"] input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+  }
+}

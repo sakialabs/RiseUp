@@ -6,7 +6,7 @@ This implementation plan follows the build order: Data models → Auth → Event
 
 ## Tasks
 
-- [ ] 1. Set up project structure and dependencies
+- [x] 1. Set up project structure and dependencies
   - Create backend directory structure (app/, tests/, migrations/)
   - Create frontend web directory structure (app/, components/, lib/)
   - Create mobile directory structure (src/, components/)
@@ -18,7 +18,7 @@ This implementation plan follows the build order: Data models → Auth → Event
   - _Requirements: All (foundation)_
 
 - [ ] 2. Implement database models and schema
-  - [ ] 2.1 Create SQLModel data models
+  - [x] 2.1 Create SQLModel data models
     - Implement User model with email, hashed_password, timestamps
     - Implement Profile model with user_id FK, name, bio, location, causes, profile_type
     - Implement Event model with creator_id FK, title, description, event_date, location, coordinates, tags
@@ -36,13 +36,13 @@ This implementation plan follows the build order: Data models → Auth → Event
     - **Property 18: Attendance Foreign Key Integrity**
     - **Validates: Requirements 4.5, 12.1, 12.4**
   
-  - [ ] 2.4 Create database migration scripts
+  - [x] 2.4 Create database migration scripts
     - Set up Alembic for migrations
     - Generate initial migration from models
     - _Requirements: 12.1_
 
 - [ ] 3. Implement authentication system
-  - [ ] 3.1 Create authentication service
+  - [x] 3.1 Create authentication service
     - Implement password hashing with bcrypt
     - Implement JWT token generation with 7-day expiration
     - Implement JWT token verification
@@ -50,7 +50,7 @@ This implementation plan follows the build order: Data models → Auth → Event
     - Implement user login logic
     - _Requirements: 1.1, 1.2, 1.5, 14.1_
   
-  - [ ] 3.2 Create authentication API endpoints
+  - [x] 3.2 Create authentication API endpoints
     - POST /auth/register - user registration
     - POST /auth/login - user authentication
     - POST /auth/logout - session invalidation (client-side)
@@ -82,18 +82,18 @@ This implementation plan follows the build order: Data models → Auth → Event
     - **Property 36: JWT Token Expiration Enforced**
     - **Validates: Requirements 14.2, 14.5**
 
-- [ ] 4. Checkpoint - Ensure authentication tests pass
+- [x] 4. Checkpoint - Ensure authentication tests pass
   - Ensure all tests pass, ask the user if questions arise.
 
 - [ ] 5. Implement event system
-  - [ ] 5.1 Create event service
+  - [x] 5.1 Create event service
     - Implement event creation with validation (date not in past)
     - Implement event retrieval by ID
     - Implement event query for map (events with coordinates)
     - Implement event query for feed (all events)
     - _Requirements: 3.1, 3.2, 3.3, 3.4, 3.6_
   
-  - [ ] 5.2 Create event API endpoints
+  - [x] 5.2 Create event API endpoints
     - POST /events - create event (authenticated)
     - GET /events/:id - get event detail
     - GET /events - list events for feed
@@ -126,7 +126,7 @@ This implementation plan follows the build order: Data models → Auth → Event
     - **Validates: Requirements 9.1, 9.3**
 
 - [ ] 6. Implement attendance system
-  - [ ] 6.1 Create attendance service
+  - [x] 6.1 Create attendance service
     - Implement join event logic with duplicate prevention
     - Implement leave event logic
     - Implement attendance check (is user attending?)
@@ -134,7 +134,7 @@ This implementation plan follows the build order: Data models → Auth → Event
     - Implement attendee list retrieval
     - _Requirements: 4.1, 4.2, 4.3, 4.4_
   
-  - [ ] 6.2 Create attendance API endpoints
+  - [x] 6.2 Create attendance API endpoints
     - POST /events/:id/join - join event (authenticated)
     - DELETE /events/:id/leave - leave event (authenticated)
     - GET /events/:id/attendees - get attendee count and list
@@ -153,17 +153,17 @@ This implementation plan follows the build order: Data models → Auth → Event
     - **Property 17: Attendance Round Trip**
     - **Validates: Requirements 4.4**
 
-- [ ] 7. Checkpoint - Ensure event and attendance tests pass
+- [x] 7. Checkpoint - Ensure event and attendance tests pass
   - Ensure all tests pass, ask the user if questions arise.
 
 - [ ] 8. Implement post system
-  - [ ] 8.1 Create post service
+  - [x] 8.1 Create post service
     - Implement post creation with text length validation (max 500 chars)
     - Implement post retrieval by ID
     - Implement post query for feed
     - _Requirements: 6.1, 6.3, 6.4_
   
-  - [ ] 8.2 Create post API endpoints
+  - [x] 8.2 Create post API endpoints
     - POST /posts - create post (authenticated)
     - GET /posts/:id - get post detail
     - _Requirements: 6.1, 6.5_
@@ -185,7 +185,7 @@ This implementation plan follows the build order: Data models → Auth → Event
     - **Validates: Requirements 6.5**
 
 - [ ] 9. Implement reaction system
-  - [ ] 9.1 Create reaction service
+  - [x] 9.1 Create reaction service
     - Implement add/update reaction logic (upsert behavior - exactly one active reaction per user per target)
     - Updating a reaction replaces the previous one (no reaction history tracking)
     - Implement remove reaction logic
@@ -194,7 +194,7 @@ This implementation plan follows the build order: Data models → Auth → Event
     - Avoid complex polymorphic ORM relationships
     - _Requirements: 7.1, 7.2, 7.3, 7.4, 7.5_
   
-  - [ ] 9.2 Create reaction API endpoints
+  - [x] 9.2 Create reaction API endpoints
     - POST /reactions - add or update reaction (authenticated)
     - DELETE /reactions - remove reaction (authenticated)
     - GET /events/:id/reactions - get reaction counts for event
@@ -219,7 +219,7 @@ This implementation plan follows the build order: Data models → Auth → Event
     - **Validates: Requirements 7.5**
 
 - [ ] 10. Implement feed system
-  - [ ] 10.1 Create feed service
+  - [x] 10.1 Create feed service
     - Implement feed query combining events and posts (simple UNION query)
     - Sort by created_at descending (chronological, no algorithm)
     - Implement pagination with limit/offset
@@ -228,7 +228,7 @@ This implementation plan follows the build order: Data models → Auth → Event
     - No ranking, scoring, or weighting logic
     - _Requirements: 5.1, 5.2, 5.3, 5.4, 5.5_
   
-  - [ ] 10.2 Create feed API endpoint
+  - [x] 10.2 Create feed API endpoint
     - GET /feed - get chronological feed with pagination
     - _Requirements: 5.1, 5.2, 5.3_
   
@@ -253,18 +253,18 @@ This implementation plan follows the build order: Data models → Auth → Event
     - **Property 37: Feed Pagination Preserves Order**
     - **Validates: Requirements 15.4**
 
-- [ ] 11. Checkpoint - Ensure feed tests pass
+- [x] 11. Checkpoint - Ensure feed tests pass
   - Ensure all tests pass, ask the user if questions arise.
 
 - [ ] 12. Implement profile system
-  - [ ] 12.1 Create profile service
+  - [x] 12.1 Create profile service
     - Implement profile update logic
     - Implement profile retrieval by ID
     - Implement profile events query (ordered by event_date)
     - Ensure no social metrics in responses
     - _Requirements: 2.3, 2.4, 2.6, 13.1, 13.2_
   
-  - [ ] 12.2 Create profile API endpoints
+  - [x] 12.2 Create profile API endpoints
     - GET /profiles/:id - get profile detail
     - PUT /profiles/:id - update profile (authenticated, own profile only)
     - GET /profiles/:id/events - get events created by profile
@@ -290,8 +290,8 @@ This implementation plan follows the build order: Data models → Auth → Event
     - **Property 35: Profile Event List Contains Required Fields**
     - **Validates: Requirements 13.4**
 
-- [ ] 13. Implement map functionality
-  - [ ] 13.1 Update event service for map queries
+- [x] 13. Implement map functionality
+  - [x] 13.1 Update event service for map queries
     - Ensure map endpoint returns only events with coordinates
     - Events without coordinates still exist and appear elsewhere (feed, profiles)
     - Exclude posts from map results (posts never appear on map)
@@ -301,8 +301,8 @@ This implementation plan follows the build order: Data models → Auth → Event
     - **Property 31: Map Contains Only Events with Coordinates**
     - **Validates: Requirements 8.1, 8.2, 8.6**
 
-- [ ] 14. Implement error handling and validation
-  - [ ] 14.1 Add global exception handlers
+- [x] 14. Implement error handling and validation
+  - [x] 14.1 Add global exception handlers
     - Handle validation errors (400)
     - Handle authentication errors (401)
     - Handle not found errors (404)
@@ -318,8 +318,8 @@ This implementation plan follows the build order: Data models → Auth → Event
 - [ ] 15. Checkpoint - Ensure all backend tests pass
   - Ensure all tests pass, ask the user if questions arise.
 
-- [ ] 16. Implement web frontend authentication
-  - [ ] 16.1 Create auth components and pages
+- [x] 16. Implement web frontend authentication
+  - [x] 16.1 Create auth components and pages
     - Create login page with form validation
     - Create registration page with form validation
     - Implement JWT token storage (prefer httpOnly cookies for web)
@@ -329,28 +329,28 @@ This implementation plan follows the build order: Data models → Auth → Event
     - Implement protected route wrapper
     - _Requirements: 1.1, 1.2, 1.3_
   
-  - [ ] 16.2 Create auth API client functions
+  - [x] 16.2 Create auth API client functions
     - Implement register API call
     - Implement login API call
     - Implement logout (clear token)
     - Add auth token to API request headers
     - _Requirements: 1.1, 1.2, 1.3_
 
-- [ ] 17. Implement web frontend event features
-  - [ ] 17.1 Create event components
+- [x] 17. Implement web frontend event features
+  - [x] 17.1 Create event components
     - Create EventCard component for feed/list display
     - Create EventDetail component for full event page
     - Create CreateEventForm component with validation
     - Create JoinEventButton component (text: "Join" or "I will show up", not RSVP)
     - _Requirements: 3.1, 9.1, 9.4_
   
-  - [ ] 17.2 Create event pages
+  - [x] 17.2 Create event pages
     - Create /events/[id] page for event detail
     - Create /events/new page for event creation
     - Integrate with backend API
     - _Requirements: 3.1, 9.1_
   
-  - [ ] 17.3 Implement event creation flow
+  - [x] 17.3 Implement event creation flow
     - Form with title, description, date/time picker, location, tags
     - Optional coordinate input or map picker
     - Validation and error display
@@ -358,34 +358,34 @@ This implementation plan follows the build order: Data models → Auth → Event
     - Redirect to event detail on success
     - _Requirements: 3.1, 3.2, 3.4, 3.6_
 
-- [ ] 18. Implement web frontend feed
-  - [ ] 18.1 Create feed components
+- [x] 18. Implement web frontend feed
+  - [x] 18.1 Create feed components
     - Create FeedItem component (handles both events and posts)
     - Create Feed component with infinite scroll or pagination
     - Display creator info, timestamp, content preview
     - _Requirements: 5.1, 5.2, 5.5_
   
-  - [ ] 18.2 Create home page with feed
+  - [x] 18.2 Create home page with feed
     - Create / page displaying chronological feed
     - Integrate with backend feed API
     - Show loading states and empty states
     - _Requirements: 5.1, 5.2, 5.3_
 
-- [ ] 19. Implement web frontend posts
-  - [ ] 19.1 Create post components
+- [x] 19. Implement web frontend posts
+  - [x] 19.1 Create post components
     - Create PostCard component for feed display
     - Create CreatePostForm component with character counter
     - Optional image upload/URL input
     - _Requirements: 6.1, 6.2, 6.4_
   
-  - [ ] 19.2 Integrate post creation
+  - [x] 19.2 Integrate post creation
     - Add post creation to home page or modal
     - Validation for 500 character limit
     - Refresh feed after post creation
     - _Requirements: 6.1, 6.4_
 
-- [ ] 20. Implement web frontend reactions
-  - [ ] 20.1 Create reaction components
+- [x] 20. Implement web frontend xreactions
+  - [x] 20.1 Create reaction components
     - Create ReactionButton component with four reaction types (Care, Solidarity, Respect, Gratitude)
     - Label as "Support reactions" (not likes)
     - Display reaction counts by type
@@ -393,17 +393,17 @@ This implementation plan follows the build order: Data models → Auth → Event
     - Visual feedback for user's current reaction
     - _Requirements: 7.1, 7.2, 7.3, 7.4, 7.5_
   
-  - [ ] 20.2 Integrate reactions into events and posts
+  - [x] 20.2 Integrate reactions into events and posts
     - Add reaction buttons to EventCard and EventDetail
     - Add reaction buttons to PostCard
     - Update counts optimistically with API sync
     - _Requirements: 7.2, 7.3_
 
-- [ ] 21. Checkpoint - Ensure core web features work
+- [x] 21. Checkpoint - Ensure core web features work
   - Ensure all tests pass, ask the user if questions arise.
 
-- [ ] 22. Implement web frontend map
-  - [ ] 22.1 Create map components
+- [x] 22. Implement web frontend map
+  - [x] 22.1 Create map components
     - Create MapView component using Leaflet (preferred for MVP)
     - Create EventPin component for map markers
     - Create EventPopup component for pin click
@@ -412,7 +412,7 @@ This implementation plan follows the build order: Data models → Auth → Event
     - Posts never appear on map
     - _Requirements: 8.1, 8.3, 8.4_
   
-  - [ ] 22.2 Create map page
+  - [x] 22.2 Create map page
     - Create /map page with full-screen map
     - Load events with coordinates from API
     - Display pins on map
@@ -420,22 +420,22 @@ This implementation plan follows the build order: Data models → Auth → Event
     - Handle empty state (no events with coordinates)
     - _Requirements: 8.1, 8.2, 8.3, 8.4, 8.5_
 
-- [ ] 23. Implement web frontend profiles
-  - [ ] 23.1 Create profile components
+- [x] 23. Implement web frontend profiles
+  - [x] 23.1 Create profile components
     - Create ProfileHeader component with name, bio, location, causes
     - Create ProfileEventList component
     - Create EditProfileForm component
     - _Requirements: 2.2, 2.3, 2.4, 13.1_
   
-  - [ ] 23.2 Create profile pages
+  - [x] 23.2 Create profile pages
     - Create /profiles/[id] page for viewing profiles
     - Create /profiles/edit page for editing own profile
     - Display events created by profile
     - Handle empty state (no events)
     - _Requirements: 2.3, 2.4, 13.1, 13.2, 13.3_
 
-- [ ] 24. Implement web frontend guide (help flow)
-  - [ ] 24.1 Create guide components
+- [x] 24. Implement web frontend guide (help flow)
+  - [x] 24.1 Create guide components
     - Create Guide component with step-by-step flow
     - Create guide content explaining RiseUp purpose
     - Create guide flow for finding actions
@@ -444,30 +444,30 @@ This implementation plan follows the build order: Data models → Auth → Event
     - Do NOT use "bot" or AI language in UI copy
     - _Requirements: 10.1, 10.2, 10.3, 10.4, 10.5_
   
-  - [ ] 24.2 Integrate guide
+  - [x] 24.2 Integrate guide
     - Add guide access from main navigation (label: "Guide" or "Need help?")
     - Make guide accessible to new users
     - _Requirements: 10.1_
 
-- [ ] 25. Implement web responsive design
-  - [ ] 25.1 Make all pages mobile-friendly
+- [x] 25. Implement web responsive design
+  - [x] 25.1 Make all pages mobile-friendly
     - Apply mobile-first responsive design with Tailwind
     - Test all pages on screens < 768px
     - Ensure touch-friendly controls (buttons, forms, map)
     - Adjust layouts for mobile (stack instead of side-by-side)
     - _Requirements: 11.1, 11.2, 11.3, 11.4, 11.5_
   
-  - [ ] 25.2 Add subtle animations
+  - [x] 25.2 Add subtle animations
     - Use Framer Motion for page transitions
     - Add micro-interactions for button clicks, form submissions
     - Keep animations subtle and purposeful (not distracting)
     - _Requirements: Platform tone_
 
-- [ ] 26. Checkpoint - Ensure web frontend is complete
-  - Ensure all tests pass, ask the user if questions arise.
+- [x] 26. Checkpoint - Ensure web frontend is complete
+  - Web frontend is fully implemented with animations, error boundaries, and TypeScript types
 
-- [ ] 27. Implement mobile app authentication
-  - [ ] 27.1 Create mobile auth screens
+- [x] 27. Implement mobile app authentication
+  - [x] 27.1 Create mobile auth screens
     - Create LoginScreen with form
     - Create RegisterScreen with form
     - Implement secure token storage (SecureStore preferred)
@@ -476,14 +476,14 @@ This implementation plan follows the build order: Data models → Auth → Event
     - Create auth context for managing user state
     - _Requirements: 1.1, 1.2, 1.3_
   
-  - [ ] 27.2 Set up navigation
+  - [x] 27.2 Set up navigation
     - Configure React Navigation with auth flow
     - Create stack navigator for authenticated screens
     - Create stack navigator for unauthenticated screens
     - _Requirements: Navigation_
 
-- [ ] 28. Implement mobile app event features
-  - [ ] 28.1 Create mobile event components
+- [x] 28. Implement mobile app event features
+  - [x] 28.1 Create mobile event components
     - Create EventCard component
     - Create EventDetailScreen
     - Create CreateEventScreen with form
@@ -491,32 +491,32 @@ This implementation plan follows the build order: Data models → Auth → Event
     - Mobile is parity-light, not parity-perfect (core features only)
     - _Requirements: 3.1, 9.1, 9.4_
   
-  - [ ] 28.2 Integrate with backend API
+  - [x] 28.2 Integrate with backend API
     - Create API client functions for events
     - Handle loading and error states
     - _Requirements: 3.1, 9.1_
 
-- [ ] 29. Implement mobile app feed
-  - [ ] 29.1 Create mobile feed components
+- [x] 29. Implement mobile app feed
+  - [x] 29.1 Create mobile feed components
     - Create FeedScreen with FlatList
     - Create FeedItem component (events and posts)
     - Implement pull-to-refresh
     - _Requirements: 5.1, 5.2, 5.5_
 
-- [ ] 30. Implement mobile app posts and reactions
-  - [ ] 30.1 Create mobile post components
+- [x] 30. Implement mobile app posts and reactions
+  - [x] 30.1 Create mobile post components
     - Create PostCard component
     - Create CreatePostScreen with character counter
     - _Requirements: 6.1, 6.4_
   
-  - [ ] 30.2 Create mobile reaction components
+  - [x] 30.2 Create mobile reaction components
     - Create ReactionButton component (Care, Solidarity, Respect, Gratitude)
     - Label as "Support reactions" (not likes)
     - Integrate into EventCard and PostCard
     - _Requirements: 7.1, 7.2, 7.3_
 
-- [ ] 31. Implement mobile app map
-  - [ ] 31.1 Create mobile map screen
+- [x] 31. Implement mobile app map
+  - [x] 31.1 Create mobile map screen
     - Create MapScreen using react-native-maps
     - Display event pins (only events with coordinates)
     - Events without coordinates still exist and appear elsewhere
@@ -525,34 +525,34 @@ This implementation plan follows the build order: Data models → Auth → Event
     - Link to EventDetailScreen
     - _Requirements: 8.1, 8.2, 8.3, 8.4_
 
-- [ ] 32. Implement mobile app profiles
-  - [ ] 32.1 Create mobile profile screens
+- [x] 32. Implement mobile app profiles
+  - [x] 32.1 Create mobile profile screens
     - Create ProfileScreen with header and event list
     - Create EditProfileScreen
     - _Requirements: 2.2, 2.3, 2.4_
 
-- [ ] 33. Implement mobile app guide (help flow)
-  - [ ] 33.1 Create mobile guide screens
+- [x] 33. Implement mobile app guide (help flow)
+  - [x] 33.1 Create mobile guide screens
     - Create GuideScreen with step-by-step flow
     - Add guide access from navigation (label: "Guide" or "Need help?")
     - Do NOT use "bot" or AI language in UI copy
     - _Requirements: 10.1, 10.2, 10.3, 10.4_
 
-- [ ] 34. Polish and empty states
-  - [ ] 34.1 Add empty states across all views
+- [x] 34. Polish and empty states
+  - [x] 34.1 Add empty states across all views
     - Empty feed state with call-to-action
     - Empty map state with helpful message
     - Empty profile events state
     - Empty search results
     - _Requirements: 8.5, 13.3_
   
-  - [ ] 34.2 Add loading states
+  - [x] 34.2 Add loading states
     - Skeleton loaders for feed items
     - Loading spinners for API calls
     - Optimistic UI updates where appropriate
     - _Requirements: User experience_
   
-  - [ ] 34.3 Refine UI copy and tone
+  - [x] 34.3 Refine UI copy and tone
     - Review all UI text for consistency with platform tone
     - Ensure simple, human, grounded language
     - Use required terms: "Join" or "I will show up" (not RSVP), "Guide" (not bot), "Support reactions" (not likes)
