@@ -1,7 +1,6 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
 export function Logo({ size = 'md' }: { size?: 'sm' | 'md' | 'lg' }) {
@@ -24,13 +23,12 @@ export function Logo({ size = 'md' }: { size?: 'sm' | 'md' | 'lg' }) {
         whileHover={{ rotate: [0, -10, 10, -10, 0] }}
         transition={{ duration: 0.5 }}
       >
-        <Image
+        <img
           src="/logo.png"
           alt="RiseUp Logo"
           width={dimension}
           height={dimension}
           className="object-contain"
-          priority
         />
       </motion.div>
       <span className="text-2xl font-bold" style={{ color: 'var(--color-text-primary)' }}>
